@@ -15,12 +15,12 @@ public class ExampleThread {
         //Thread.MAX_PRIORITY
         //MyThread myThread=new MyThread("Potok",30);
         List<Integer>  list=new ArrayList<>();
-        list.add(1);
-        list.add(5);
-        list.add(7);
-        list.add(8);
-        list.add(9);
-        list.add(10);
+        list.add(-100);
+//        list.add(5);
+//        list.add(7);
+//        list.add(8);
+//        list.add(9);
+//        list.add(10);
         MyThreadR myThread=new MyThreadR("1 Potok",30,Thread.MAX_PRIORITY,list);
 
         MyThreadR myThread1=new MyThreadR("2 Potok",30,Thread.NORM_PRIORITY,list);
@@ -60,7 +60,7 @@ class MyThreadR implements  Runnable {
     public MyThreadR(String name, int counter,int priority,List<Integer> list) {
         this.counter=counter;
         this.innerThread=new Thread(this, name);
-        innerThread.setPriority(priority);
+       // innerThread.setPriority(priority);
         myList=list;
         System.out.println(innerThread.getState()+" 111111111");
                 innerThread.start();
@@ -76,14 +76,14 @@ class MyThreadR implements  Runnable {
             for (int temp:myList ) {
                 sum+=temp;
             }
-            myList.add(77);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            myList.add(counter);
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
             }
+        System.out.println(innerThread.getName() + " "+myList);
         }
 
 
     }
-}
